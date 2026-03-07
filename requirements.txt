@@ -1,0 +1,4 @@
+markdown==3.7
+pyyaml==6.0.2
+livereload==2.7.1
+requests==2.32.3

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dave's Fries - Movie Reviews</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="site-title">Dave's Fries</h1>
+      <marquee behavior="scroll" direction="left" scrollamount="3">
+        ~*~ Movie Reviews From the Couch ~*~
+      </marquee>
+      <div class="visitor-counter">
+        <span class="counter-label">You are visitor #</span>
+        <span class="counter-number">004,721</span>
+      </div>
+    </header>
+
+    <main>
+      <p class="intro">Welcome to my movie page! I've seen <strong>{{ count }}</strong> movies worth talking about. Grab some fries and enjoy.</p>
+      <hr class="rainbow">
+
+      {{ movies }}
+    </main>
+
+    <footer>
+      <hr class="rainbow">
+      <p>Best viewed in <strong>Netscape Navigator 4.0</strong> at 800x600</p>
+      <p><a href="#" onclick="alert('Coming soon!'); return false;">Sign my guestbook!</a></p>
+      <p class="copyright">&copy; 2026 Dave's Fries. All rights reserved. None of them are exercised.</p>
+    </footer>
+  </div>
+
+
+</body>
+</html>
