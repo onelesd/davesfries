@@ -74,10 +74,16 @@ def build() -> None:
     with open("template.html", "r") as f:
         template = f.read()
 
-    commit = subprocess.run(
-        ["git", "rev-parse", "--short", "HEAD"],
-        capture_output=True, text=True
-    ).stdout.strip() or "unknown"
+    commit = os.environ.get("COMMIT_SHA", "")
+    if not commit:
+        try:
+            commit = subprocess.run(
+                ["git", "rev-parse", "--short", "HEAD"],
+                capture_output=True, text=True
+            ).stdout.strip()
+        except FileNotFoundError:
+            pass
+    commit = commit[:7] or "unknown"
 
     html = template.replace("{{ movies }}", movie_html)
     html = html.replace("{{ count }}", str(len(movies)))

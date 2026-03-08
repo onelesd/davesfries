@@ -20,3 +20,5 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/davesfries:latest
+          build-args: |
+            COMMIT_SHA=${{ github.sha }}
