@@ -16,8 +16,8 @@ python add-movie.py <imdb-url> [rating]  # generate movie .md from IMDB link
 ```
 build.py          # Reads movies/*.md, sorts by year, renders into template → dist/index.html
 add-movie.py      # Fetches title/year/director from IMDB GraphQL API, writes movies/<slug>.md
-template.html     # HTML shell with {{ movies }} and {{ count }} placeholders
-assets/style.css  # 90s aesthetic (starfield bg, neon colors, Comic Neue, rainbow HRs)
+template.html     # HTML shell with {{ movies }}, {{ count }}, and {{ commit }} placeholders
+assets/style.css  # Chunky Win95-style button styles (also inlined in template.html)
 movies/*.md       # One file per movie: YAML frontmatter + markdown review body
 dist/             # Generated output (gitignored)
 ```
@@ -44,7 +44,7 @@ Review text in markdown goes here.
 
 ## Build Pipeline
 
-`build.py` does: read all `movies/*.md` → parse YAML frontmatter + render markdown body → sort by (year, title) → inject into `template.html` replacing `{{ movies }}` and `{{ count }}` → copy `assets/` into `dist/assets/` → write `dist/index.html`.
+`build.py` does: read all `movies/*.md` → parse YAML frontmatter + render markdown body → sort by (year, title) → inject into `template.html` replacing `{{ movies }}`, `{{ count }}`, and `{{ commit }}` (short git SHA) → copy `assets/` into `dist/assets/` → write `dist/index.html`.
 
 ## add-movie.py
 
@@ -60,7 +60,7 @@ Managed via `requirements.txt` and a local `.venv`:
 
 ## Style
 
-90s GeoCities-inspired: dark starfield background (CSS radial gradients), Comic Neue font, neon magenta/cyan/yellow palette, rainbow gradient `<hr>` separators, `<marquee>` subtitle, fake visitor counter, glowing cyan-bordered movie cards.
+Mostly unstyled with a few 90s touches: `<marquee>` subtitle, chunky Win95-style beveled buttons (gray with 3D borders) for "Recommend a Movie" in the header and "Back to top" in the footer. Button styles are inlined in `template.html` and duplicated in `assets/style.css`.
 
 ## Adding a Movie
 
