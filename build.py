@@ -5,6 +5,7 @@ import argparse
 import glob
 import os
 import shutil
+import subprocess
 import sys
 
 import markdown
@@ -73,8 +74,14 @@ def build() -> None:
     with open("template.html", "r") as f:
         template = f.read()
 
+    commit = subprocess.run(
+        ["git", "rev-parse", "--short", "HEAD"],
+        capture_output=True, text=True
+    ).stdout.strip() or "unknown"
+
     html = template.replace("{{ movies }}", movie_html)
     html = html.replace("{{ count }}", str(len(movies)))
+    html = html.replace("{{ commit }}", commit)
 
     os.makedirs("dist", exist_ok=True)
 

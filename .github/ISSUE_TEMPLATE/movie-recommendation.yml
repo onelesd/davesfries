@@ -1,0 +1,35 @@
+name: Movie Recommendation
+description: Recommend a movie for Dave to review
+title: "[Recommendation] "
+labels: ["recommendation"]
+body:
+  - type: input
+    id: movie-name
+    attributes:
+      label: Movie Name
+      placeholder: e.g. Pulp Fiction
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: Year
+      description: Release year of the movie
+      placeholder: e.g. 1994
+    validations:
+      required: true
+  - type: input
+    id: imdb-link
+    attributes:
+      label: IMDB Link
+      description: Link to the movie on IMDB
+      placeholder: https://www.imdb.com/title/tt0110912/
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why should I watch this?
+      placeholder: Tell me why this movie rules
+    validations:
+      required: false
