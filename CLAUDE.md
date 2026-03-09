@@ -37,14 +37,15 @@ Review text in markdown goes here.
 ```
 
 - **title**: Movie title (quoted if it contains special chars)
-- **year**: Release year (used for sorting — ascending)
+- **year**: Release year
 - **director**: Director name(s), comma-separated for multiple
 - **rating**: 1-5 (rendered as unicode stars ★★★★☆)
+- **added**: Date added to the repo (YYYY-MM-DD, auto-set by `add-movie.py`; used for sorting — most recent first)
 - **body**: Markdown rendered to HTML for the review blurb
 
 ## Build Pipeline
 
-`build.py` does: read all `movies/*.md` → parse YAML frontmatter + render markdown body → sort by (year, title) → inject into `template.html` replacing `{{ movies }}`, `{{ count }}`, and `{{ commit }}` (short git SHA) → copy `assets/` into `dist/assets/` → write `dist/index.html`.
+`build.py` does: read all `movies/*.md` → parse YAML frontmatter + render markdown body → sort by added date descending (most recent first) → inject into `template.html` replacing `{{ movies }}`, `{{ count }}`, and `{{ commit }}` (short git SHA) → copy `assets/` into `dist/assets/` → write `dist/index.html`.
 
 ## add-movie.py
 

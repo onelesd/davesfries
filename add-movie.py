@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fetch movie info from IMDB and generate a markdown file in movies/."""
 
-import json
+import datetime
 import re
 import sys
 import unicodedata
@@ -87,11 +87,14 @@ def main() -> None:
     slug = slugify(movie["title"])
     filepath = f"movies/{slug}.md"
 
+    today = datetime.date.today().isoformat()
+
     content = f"""---
 title: "{movie['title']}"
 year: {movie['year']}
 director: "{movie['director']}"
 rating: {rating}
+added: {today}
 ---
 """
 

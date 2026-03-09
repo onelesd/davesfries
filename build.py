@@ -67,7 +67,7 @@ def build() -> None:
         if movie:
             movies.append(movie)
 
-    movies.sort(key=lambda m: (m.get("year", 0), m.get("title", "")))
+    movies.sort(key=lambda m: (m.get("added", ""), m.get("year", 0), m.get("title", "")), reverse=True)
 
     movie_html = "\n".join(render_movie(m) for m in movies)
 
